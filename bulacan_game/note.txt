@@ -1,0 +1,13 @@
+#note:
+        as you may notice, there is an issue with the pop-up screen where it 
+        appears in the middle of the screen and block our full view of the map.
+        i cannot find a way to change its position in a simple way because most
+        of the solution required us to use tkinter but i am too lazy to import and
+        use another library. 
+        
+        it is still playable though, you just need to constantly move the pop-up 
+        screen every time you will write your answer. but yeah it is annoying asf.
+
+        gomen gomen
+
+        -dabe
