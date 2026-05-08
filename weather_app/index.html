@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather app</title>
+</head>
+<body>
+    <div class="card">
+        <div class="search-cont">
+            <input type="text" placeholder="enter city name" spellcheck="false">
+            <button><img src="/images/search.png"></button>
+        </div>
+        <div class="loading hidden">Loading...</div>
+        <div class="weather-cont">
+            <img src="" class="weather-icon" alt="weather icon">
+            <h1 class="temperature"></h1>
+            <h2 class="city-name"></h2>
+            
+
+            <div class="details">
+                <div class="col">
+                    <img class="humidity-img" src="/images/humidity.png">
+                    <div class="">
+                        <p class="currHumidity"></p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img class="wind-img" src="/images/wind.png">
+                    <div class="">
+                        <p class="currWindspeed"></p>
+                        <p>Windspeed</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

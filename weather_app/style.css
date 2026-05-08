@@ -1,0 +1,193 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+}
+
+body
+{
+    background-color: #222;
+    transition: background 0.5s ease;
+}
+
+.card
+{
+    border: solid white 1px;
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    padding: 45px 35px;
+    margin: 100px auto 0px;
+}
+
+.search-cont
+{
+   
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-cont input
+{
+    border: 0;
+    outline: 0;
+    color: #555;
+    height: 60px;
+    flex: 1;
+    background-color: #EDFFFC;
+    border-radius: 30px;
+    margin-right: 16px;
+    padding: 10px 25px;
+    font-size: 18px;
+}
+
+.search-cont button
+{
+    background-color: #EDFFFC;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.search-cont button > img
+{
+    width: 16px;
+    transform: translateY(10%);
+}
+
+
+.weather-icon
+{
+    width: 170px;
+    margin-top: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.weather-cont h1
+{
+    font-size: 80px;
+    font-weight: 500;
+}
+.weather-cont h2
+{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-top: 50px
+}
+
+.col
+{
+   
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img
+{
+    width: 40%;
+    margin-right: 10px;
+}
+
+.curr-humidity, .curr-windspeed
+{
+    font-size: 24px;
+    margin-top: -6px;
+}
+
+.weather-cont
+{
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.card
+{
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to
+    {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-cont button
+{
+    transition: transform 0.2s ease,
+                background-color 0.2s ease;
+}
+
+.search-cont button:hover
+{
+    transform: scale(1.1);
+    background-color: #d6fff7;
+}
+
+@keyframes float
+{
+    0%
+    {
+        transform: translateY(0px);
+    }
+
+    50%
+    {
+        transform: translateY(-10px);
+    }
+
+    100%
+    {
+        transform: translateY(0px);
+    }
+}
+
+.loading
+{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.hidden
+{
+    display: none;
+}
+.card
+{
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.search-cont button:active
+{
+    transform: scale(0.9);
+}
