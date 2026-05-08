@@ -1,0 +1,132 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+}
+
+body
+{
+    background-color: #1E2022;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+.cont
+{
+    width: 95%;
+    max-width: 600px;
+    border: black solid white;
+    background: linear-gradient(135deg, #C9D6DF, #F0F5F9);
+    min-height: 500px;
+    margin: 50px auto;
+    border-radius: 30px;  
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(15px);
+   
+}
+
+.cont > h2 
+{
+    padding: 30px 0px 10px 30px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.line
+{
+    width: 90%;
+    border: black solid 1px;
+    margin: 10px auto 20px;
+}
+
+.quiz
+{
+    flex: 1;
+    padding-top: 20px;
+}
+
+.quiz h3
+{
+    margin: 20px;
+    font-size: 1rem;
+    margin-bottom: 50px;
+    animation: slideKonti 0.5s;
+}
+
+
+.btn
+{
+   outline: none;
+   border: none;
+   display: block;
+   width: 90%;
+   padding: 10px;
+   margin: 10px 0px 0px 20px;
+   border-radius: 10px;
+   text-align: left;
+   box-shadow: 8px 5px 5px rgba(0,0,0,0.3);
+   cursor: pointer;
+   font-weight: 500;
+   color: #222;
+   transition: all 0.2s ease-in;
+   animation: slideKonti 0.5s;
+}
+
+@keyframes slideKonti
+{
+    from
+    {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to
+    {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.btn:hover
+{
+    filter: brightness(0.9);
+    transform: scale(1.03);
+}
+
+#nextBtn
+{
+    outline: 0;
+    border: 0;
+    padding: 10px 20px;
+    margin: 20px auto 0px;
+    border-radius: 10px;
+    background-color: #3B7597; 
+    display: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.quiz > button:hover
+{
+    transform: scale(1.1);
+}
+
+.correct
+{
+    background-color: darkgreen;
+    color: #fff;
+
+}
+.incorrect
+{
+    background-color: darkred;
+    color: #fff
+}
+
+.darkened
+{
+    filter: brightness(0.50);
+}
