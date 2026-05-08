@@ -1,0 +1,180 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Courier New', Courier, monospace;
+    
+}
+
+.container
+{
+    width: 100%;
+    min-height: 100vh;
+    border: solid black 1px;
+    background: linear-gradient(135deg, #153677, #4e085f );
+    padding: 10px;
+    position: relative;
+}
+
+.todo-app
+{
+    width: 100%;
+    max-width: 540px;
+    background-color: white;
+    border: white solid 1px;
+    margin: 3rem auto 1rem;
+    padding: 40px 30px 70px;
+    border-radius: 30px;
+
+}
+
+.todo-app > h2
+{
+    
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+
+}
+
+.todo-app img
+{
+    width: 30px;
+    margin: 0px 15px
+}
+
+.row
+{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    background-color: #edeef0;
+
+}
+
+.row > input
+{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.row > button
+{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background-color: #ff5945;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#listContainer
+{
+    list-style: none;
+}
+
+#listContainer > li
+{
+    font-size: 16px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+   
+}
+
+.new-task {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.new-task.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+#listContainer > li::before
+{
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius:50%;
+    background-image: url(/images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+    transform: translateY(-15%);
+}
+
+.checked
+{
+    text-decoration: line-through;
+    color: #555;
+
+}
+
+#listContainer > .checked::before
+{
+    background-image: url(/images/checked.png);
+}
+
+.alert-box
+{
+    background-color: #fff;
+    width: 60%;
+    max-width: 500px;
+    padding: 15px 30px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 50%);
+    border-radius: 20px;
+    border: solid 1px ;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1;
+}
+
+
+.alert-box button
+{
+    outline: none;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 30px;
+}
+
+span
+{
+    margin-left: auto;
+    position: absolute;
+    right: 20px;
+    font-size: 23px;
+    border-radius: 50%;
+    background-color:#edeef0; 
+    padding: 3px 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    
+}
+
+span:hover
+{
+    filter:brightness(0.8)
+}
