@@ -1,0 +1,164 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body
+{
+    background-color: #2C3947;
+}
+
+
+.container
+{
+    width: 90%;
+    max-width: 700px;
+    padding: 2rem 1rem;
+    margin-top: 10rem;
+    margin-left: 4rem;
+}
+
+.title
+{
+    font-size: 2.6rem;
+    color: #ffff;
+    margin-bottom: 32px;
+
+}
+
+.highlight
+{
+    color: #9AD872;
+}
+
+
+.inputBox
+{
+    position: relative;
+    width: 65%;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 14px;
+
+}
+
+.inputBox > input
+{
+    width: 90%;
+    font-size: 1rem;
+    padding: 12px 12px;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+
+}
+
+.inputBox > img
+{
+    width: 25px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+button
+{
+    background-color: #9AD872;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 18px;
+    padding: 12px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    width: 40%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+button:active
+{
+    transform: scale(0.8);
+}
+
+
+button > img
+{
+    width: 30px;
+    margin-left: auto;
+}
+
+
+@media (max-width: 700px)
+{
+      .container
+    {
+        width: 90%;
+        margin: 2rem;
+    }
+    .inputBox > input
+    {
+        width: 85%;
+    }
+}
+
+
+@media (max-width: 500px)
+{
+    .title
+    {
+        font-size: 2rem;
+    }
+       button
+    {
+        font-size: 90%;
+        max-width: 120px;
+        min-width: auto;
+    }
+
+    button > img
+    {
+        width: 14px;
+    }
+}
+
+
+@media (max-width: 400px)
+{
+    .inputBox > input
+    {
+        font-size: 12px;
+
+        
+    }
+
+    .inputBox
+    {
+        min-width: 200px;
+    }
+        
+    .inputBox > img
+    {
+        width: 15px;
+    }
+
+    .container
+    {
+        margin: auto;
+        padding: 1rem;
+
+    }
+
+ 
+    
+}
