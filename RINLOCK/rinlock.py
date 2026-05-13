@@ -56,7 +56,15 @@ class RinVault:
             notes TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
+    
+        CREATE TABLE IF NOT EXISTS custom_commands (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            command_key TEXT,
+            action TEXT
+        );
         """)
+        
         self.conn.commit()
 
     def register(self):
@@ -194,7 +202,7 @@ Created: {row[4]}
             decrypted_password = self.cipher.decrypt(row[2].encode()).decode()
 
             print(f"""
-    =====================
+=====================
 App: {row[0]}
 Username: {row[1]}
 Password: {decrypted_password}""")
@@ -249,9 +257,9 @@ Choice: """)
 
                 else:
                     print("""
-            =======================
-            CUSTOM RINLOCK COMMANDS
-            =======================
+============================
+YOUR CUSTOM RINLOCK COMMANDS
+============================
             """)
 
                 for key, value in self.custom_codes.items():
@@ -259,12 +267,12 @@ Choice: """)
         
             elif choice == "CODE2":
                 print("""
-            ==================================================
-            To see your command type: RinLock_cmd to dashboard
+==================================================
+To see your command type: RinLock_cmd to dashboard
 
-            Format:
-            COMMAND1:add COMMAND2:view COMMAND3:delete
-            ==================================================
+Format:
+COMMAND1:add COMMAND2:view COMMAND3:delete
+==================================================
             """)
 
                 raw = input("\nEnter your secret commands: ").strip()
@@ -289,9 +297,9 @@ Choice: """)
                     continue
 
                 self.custom_codes = {
-                    k1: v1,
-                    k2: v2,
-                    k3: v3
+                    k1.strip(): v1.strip(),
+                    k2.strip(): v2.strip(),
+                    k3.strip(): v3.strip()
                 }
 
                 print("Commands saved successfully!")
