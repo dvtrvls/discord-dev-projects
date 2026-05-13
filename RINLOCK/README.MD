@@ -119,13 +119,6 @@ Enter your registered username:
 Enter your password:
 ```
 
-Example:
-
-```text
-Enter your registered username: Jhon
-Enter your password: Rain123
-```
-
 ---
 
 # Dashboard Menu
@@ -142,107 +135,12 @@ After logging in:
 
 ---
 
-# Add A Note
-
-Press:
-
-```text
-1
-```
-
-Then enter:
-
-```text
-Enter the title:
-Enter the content:
-```
-
-Example:
-
-```text
-Enter the title: Reminder
-Enter the content: Finish my project
-```
-
----
-
-# View Notes
-
-Press:
-
-```text
-2
-```
-
-Your saved notes will appear.
-
----
-
-# Edit Notes
-
-Press:
-
-```text
-3
-```
-
-Then enter:
-
-```text
-Enter note title to edit:
-Enter new title:
-Enter new content:
-```
-
-Example:
-
-```text
-Enter note title to edit: Reminder
-Enter new title: School Reminder
-Enter new content: Submit the project tomorrow
-```
-
----
-
-# Delete Notes
-
-Press:
-
-```text
-4
-```
-
-Then enter:
-
-```text
-Enter note title to delete:
-```
-
-Example:
-
-```text
-Enter note title to delete: Reminder
-```
-
----
-
-# Logout
-
-Press:
-
-```text
-5
-```
-
----
 
 # Secret Password Commands
 
 Inside the dashboard, type:
 
-```text
-CODE2
-```
+# CODE2
 
 You will see:
 
@@ -277,12 +175,6 @@ MYADD
 ```
 
 Then enter:
-
-```text
-App:
-Username:
-Password:
-```
 
 Example:
 
