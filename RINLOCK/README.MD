@@ -140,7 +140,9 @@ After logging in:
 
 Inside the dashboard, type:
 
-# CODE2
+```text
+CODE2
+```
 
 You will see:
 
