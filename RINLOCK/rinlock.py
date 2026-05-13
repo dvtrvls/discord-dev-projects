@@ -1,9 +1,20 @@
 import sqlite3
 import time
-
+from cryptography.fernet import Fernet
+import re
 
 class RinVault:
     def __init__(self):
+        try:
+            with open("secret.key", "rb") as key_file:
+                self.key = key_file.read()
+        except FileNotFoundError:
+            self.key = Fernet.generate_key()
+            with open("secret.key", "wb") as key_file:
+                key_file.write(self.key)
+
+        self.cipher = Fernet(self.key)
+
         print("""
 ██████╗░██╗███╗░░██╗░░░░░░██╗░░░░░░█████╗░░█████╗░██╗░░██╗
 ██╔══██╗██║████╗░██║░░░░░░██║░░░░░██╔══██╗██╔══██╗██║░██╔╝
@@ -111,15 +122,53 @@ class RinVault:
 
         for row in rows:
             print(f"""
+=====================
 Title: {row[2]}
 Note: {row[3]}
 Created: {row[4]}
 """)
 
+    def edit_note(self):
+        self.view_notes()
+
+        title = input("\nEnter note title to edit: ")
+        new_title = input("Enter new title: ")
+        new_note = input("Enter new content: ")
+
+        self.cursor.execute(
+            """UPDATE mynotes SET title = ?, notes = ? WHERE title = ? AND user_id = ?""",
+            (new_title, new_note, title, self.current_user_id)
+        )
+
+        self.conn.commit()
+
+        if self.cursor.rowcount > 0:
+            print("\nNote updated!")
+        else:
+            print("\nNote not found!")
+
+
+    def del_note(self):
+        self.view_notes()
+
+        title = input("\nEnter note title to delete: ")
+
+        self.cursor.execute(
+            """DELETE FROM mynotes WHERE title = ? AND user_id = ?""",
+            (title, self.current_user_id))
+
+        self.conn.commit()
+
+        if self.cursor.rowcount > 0:
+            print("\nNote deleted!")
+        else:
+            print("\nNote not found!")
+
     def add_password(self, app, username, password):
+        encrypted_password = self.cipher.encrypt(password.encode()).decode()
         self.cursor.execute(
             "INSERT INTO accounts (user_id, app, username, password) VALUES (?, ?, ?, ?)",
-            (self.current_user_id, app, username, password)
+            (self.current_user_id, app, username, encrypted_password)
         )
         self.conn.commit()
         print("\nPassword saved!")
@@ -142,12 +191,13 @@ Created: {row[4]}
             return
 
         for row in rows:
+            decrypted_password = self.cipher.decrypt(row[2].encode()).decode()
+
             print(f"""
-=====================
+    =====================
 App: {row[0]}
 Username: {row[1]}
-Password: {row[2]}
-""")
+Password: {decrypted_password}""")
 
     def del_password(self):
         print("""
@@ -169,7 +219,9 @@ Password: {row[2]}
             choice = input("""
 [1] Add Note
 [2] View Notes
-[3] Logout
+[3] Edit Note
+[4] Delete Note
+[5] Logout
 
 Choice: """)
 
@@ -180,22 +232,72 @@ Choice: """)
 
             elif choice == "2":
                 self.view_notes()
+                
+            elif choice == "3":
+                self.edit_note()
 
-            elif choice == "CODE2":
-                print("""
-Format: COMMAND1:add COMMAND2:view COMMAND3:delete
+            elif choice == "4":
+                self.del_note()
+
+            elif choice == "5":
+                self.current_user_id = None
+                print("\nLogging out...\n")
+                break
+            elif choice == "RinLock_cmd":
+                if not self.custom_codes:
+                    print("No custom command set yet.")
+
+                else:
+                    print("""
+            =======================
+            CUSTOM RINLOCK COMMANDS
+            =======================
             """)
 
-                mappings = input("Enter your secret commands: ").split()
+                for key, value in self.custom_codes.items():
+                    print(f"{key} -> {value}")
+        
+            elif choice == "CODE2":
+                print("""
+            ==================================================
+            To see your command type: RinLock_cmd to dashboard
 
-                for item in mappings:
-                    key, value = item.split(":")
-                    self.custom_codes[key] = value
+            Format:
+            COMMAND1:add COMMAND2:view COMMAND3:delete
+            ==================================================
+            """)
 
-                print("Commands saved!")
+                raw = input("\nEnter your secret commands: ").strip()
 
+                if raw.lower() == "return":
+                    print("Returning to dashboard...")
+                    continue   # stays in dashboard loop
+
+                pattern = r"(\w+):(\w+)\s+(\w+):(\w+)\s+(\w+):(\w+)"
+                match = re.fullmatch(pattern, raw)
+
+                if not match:
+                    print("Invalid format!")
+                    continue
+
+                k1, v1, k2, v2, k3, v3 = match.groups()
+
+                valid_actions = ["add", "view", "delete"]
+
+                if v1 not in valid_actions or v2 not in valid_actions or v3 not in valid_actions:
+                    print("Invalid command values!")
+                    continue
+
+                self.custom_codes = {
+                    k1: v1,
+                    k2: v2,
+                    k3: v3
+                }
+
+                print("Commands saved successfully!")
+                continue
             elif choice in self.custom_codes:
-                action = self.custom_codes[choice]
+                action = self.custom_codes[choice].strip().lower()
 
                 if action == "add":
                     app = input("App: ")
@@ -209,13 +311,8 @@ Format: COMMAND1:add COMMAND2:view COMMAND3:delete
                 elif action == "delete":
                     self.del_password()
 
-            elif choice == "3":
-                self.current_user_id = None
-                print("\nLogging out...\n")
-                break
-
-            else:
-                print("Invalid choice")
+                else:
+                    print("Invalid choice")
 
     def run(self):
         while True:
