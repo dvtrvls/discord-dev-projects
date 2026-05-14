@@ -194,20 +194,28 @@ Password: {decrypted_password}""")
 
 elif command == "delete":
 
-    if len(sys.argv) != 3:
-        print("Usage: python3 r2.py delete <app>")
+    if len(sys.argv) < 3:
+        print("Usage: python3 r2.py delete <app1> <app2> ...")
         sys.exit()
 
-    app = sys.argv[2]
+    apps = sys.argv[2:]
+    deleted = 0
 
-    cursor.execute(
-        "DELETE FROM accounts WHERE app = ?",
-        (app,)
-    )
+    for app in apps:
+        cursor.execute(
+            "DELETE FROM accounts WHERE app = ?",
+            (app,)
+        )
+
+        if cursor.rowcount > 0:
+            print(f"[+] Deleted: {app}")
+            deleted += 1
+        else:
+            print(f"[-] Not found: {app}")
 
     conn.commit()
 
-    print("Password deleted!")
+    print(f"\n[+] Total deleted: {deleted}")
 
 else:
     print("Unknown command!")

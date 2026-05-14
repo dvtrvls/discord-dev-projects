@@ -90,17 +90,19 @@ python3 r2.py view rin123
 
 ---
 
-## 🔹 Delete account
+## 🔹 Delete multiple accounts
 
 ```bash
-python3 r2.py delete <app>
+python3 r2.py delete <app1> <app2> <app3>
 ```
 
 Example:
 
 ```bash
-python3 r2.py delete facebook
+python3 r2.py delete facebook gmail twitter
 ```
+
+This will delete all specified accounts in one command.
 
 ---
 
