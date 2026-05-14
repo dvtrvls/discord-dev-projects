@@ -187,8 +187,7 @@ elif command == "view":
             ).decode()
 
             print(f"""
-=====================
-App: {row[0]}
+=====================App: {row[0]}
 Username: {row[1]}
 Password: {decrypted_password}""")
 
