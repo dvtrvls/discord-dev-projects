@@ -50,11 +50,11 @@ if len(sys.argv) < 2:
     print("""
 Usage:
 
-python3 rinlock2.0.py add <app> <username> <password>
-python3 rinlock2.0.py view <password>
-python3 rinlock2.0.py delete <app>
-python3 rinlock2.0.py setpass <password>
-python3 rinlock2.0.py changepass <old_password> <new_password>
+python3 r2.py add <app> <username> <password>
+python3 r2.py view <password>
+python3 r2.py delete <app>
+python3 r2.py setpass <password>
+python3 r2.py changepass <old_password> <new_password>
 """)
     
     sys.exit()
@@ -65,7 +65,7 @@ command = sys.argv[1].lower()
 if command == "add":
 
     if len(sys.argv) != 5:
-        print("Usage: python3 rinlock2.0.py add <app> <username> <password>")
+        print("Usage: python3 r2.py add <app> <username> <password>")
         sys.exit()
 
     app = sys.argv[2]
@@ -97,7 +97,7 @@ if command == "add":
 elif command == "setpass":
 
     if len(sys.argv) != 3:
-        print("Usage: python3 rinlock2.0.py setpass <password>")
+        print("Usage: python3 r2.py setpass <password>")
         sys.exit()
 
     password = sys.argv[2]
@@ -107,7 +107,7 @@ elif command == "setpass":
 
     if existing:
         print("Master password already exists!")
-        print("Use: python3 rinlock2.0.py changepass <old> <new>")
+        print("Use: python3 r2.py changepass <old> <new>")
         sys.exit()
 
     else:
@@ -123,7 +123,7 @@ elif command == "setpass":
 elif command == "changepass":
 
     if len(sys.argv) != 4:
-        print("Usage: python3 rinlock2.0.py changepass <old_password> <new_password>")
+        print("Usage: python3 r2.py changepass <old_password> <new_password>")
         sys.exit()
 
     old_password = sys.argv[2]
@@ -154,7 +154,7 @@ elif command == "changepass":
 elif command == "view":
 
     if len(sys.argv) != 3:
-        print("Usage: python3 rinlock2.0.py view <master_password>")
+        print("Usage: python3 r2.py view <master_password>")
         sys.exit()
 
     entered_password = sys.argv[2]
@@ -196,7 +196,7 @@ Password: {decrypted_password}
 elif command == "delete":
 
     if len(sys.argv) != 3:
-        print("Usage: python3 vault.py delete <app>")
+        print("Usage: python3 r2.py delete <app>")
         sys.exit()
 
     app = sys.argv[2]
