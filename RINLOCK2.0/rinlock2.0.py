@@ -2,8 +2,14 @@ import sqlite3
 import sys
 import os
 from cryptography.fernet import Fernet
+import platform
 
-APP_DIR = os.path.join(os.getenv("LOCALAPPDATA"), "RinLock")
+if platform.system() == "Windows":
+    BASE_DIR = os.getenv("APPDATA")
+else:
+    BASE_DIR = os.path.expanduser("~/.local/share")
+
+APP_DIR = os.path.join(BASE_DIR, "RinLock")
 os.makedirs(APP_DIR, exist_ok=True)
 
 KEY_PATH = os.path.join(APP_DIR, "secret.key")
