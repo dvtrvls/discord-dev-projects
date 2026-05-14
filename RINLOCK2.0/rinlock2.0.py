@@ -1,20 +1,27 @@
 import sqlite3
 import sys
+import os
 from cryptography.fernet import Fernet
 
+APP_DIR = os.path.join(os.getenv("APPDATA"), "RinLock")
+os.makedirs(APP_DIR, exist_ok=True)
+
+KEY_PATH = os.path.join(APP_DIR, "secret.key")
+DB_PATH = os.path.join(APP_DIR, "rinlock.db")
+
 try:
-    with open("secret.key", "rb") as key_file:
+    with open(KEY_PATH, "rb") as key_file:
         key = key_file.read()
 
 except FileNotFoundError:
     key = Fernet.generate_key()
 
-    with open("secret.key", "wb") as key_file:
+    with open(KEY_PATH, "wb") as key_file:
         key_file.write(key)
 
 cipher = Fernet(key)
 
-conn = sqlite3.connect("rinlock.db")
+conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
 cursor.executescript("""
@@ -43,7 +50,6 @@ python3 rinlock2.0.py delete <app>
 python3 rinlock2.0.py setpass <password>
 python3 rinlock2.0.py changepass <old_password> <new_password>
 """)
-    
     
     sys.exit()
 
