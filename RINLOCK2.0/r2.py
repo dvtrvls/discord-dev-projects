@@ -190,8 +190,7 @@ elif command == "view":
 =====================
 App: {row[0]}
 Username: {row[1]}
-Password: {decrypted_password}
-""")
+Password: {decrypted_password}""")
 
 elif command == "delete":
 
