@@ -3,7 +3,7 @@ import sys
 import os
 from cryptography.fernet import Fernet
 
-APP_DIR = os.path.join(os.getenv("APPDATA"), "RinLock")
+APP_DIR = os.path.join(os.getenv("LOCALAPPDATA"), "RinLock")
 os.makedirs(APP_DIR, exist_ok=True)
 
 KEY_PATH = os.path.join(APP_DIR, "secret.key")
