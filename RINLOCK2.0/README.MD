@@ -53,11 +53,22 @@ Example:
 
 python3 rinlock2.0.py delete facebook
 🔐 Security Notes
+
 Passwords are encrypted using Fernet
 Encryption key is stored in secret.key
 Master password is stored in SQLite database
 DO NOT delete secret.key or data cannot be recovered
-📁 Files
+
+📁 Storage (NEW UPDATE)
+Database is now stored in AppData (hidden folder)
+Key file is also stored securely in AppData
+
+Windows path:
+
+C:\Users\<User>\AppData\Roaming\RinLock\
+
+Files:
+
 rinlock.db → database storage
 secret.key → encryption key
 ⚠️ Warning
