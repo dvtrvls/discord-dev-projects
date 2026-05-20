@@ -216,6 +216,11 @@ elif command == "delete":
 
     print(f"\n[+] Total deleted: {deleted}")
 
+elif command == "ui":
+    from tui import launch
+    launch()
+
+
 else:
     print("Unknown command!")
 

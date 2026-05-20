@@ -13,6 +13,7 @@ A simple command-line password manager built with Python, SQLite, and Fernet enc
 - Delete saved accounts
 - Duplicate prevention system
 - Cross-platform storage support (Windows + Linux)
+- Interactive TUI mode with keyboard navigation (new)
 
 ---
 
@@ -21,7 +22,7 @@ A simple command-line password manager built with Python, SQLite, and Fernet enc
 ## 1. Install dependency
 
 ```bash
-pip install cryptography
+pip install -r requirements.txt
 ```
 
 ## 2. Run the program
@@ -90,19 +91,35 @@ python3 r2.py view rin123
 
 ---
 
-## 🔹 Delete multiple accounts
+## 🔹 Delete account
 
 ```bash
-python3 r2.py delete <app1> <app2> <app3>
+python3 r2.py delete <app>
 ```
 
 Example:
 
 ```bash
-python3 r2.py delete facebook gmail twitter
+python3 r2.py delete facebook
 ```
 
-This will delete all specified accounts in one command.
+---
+
+## 🔹 Interactive TUI mode (new)
+
+```Launches a full interactive terminal interface. Navigate accounts with keyboard commands, reveal or hide passwords on demand, and delete entries — all without exposing anything in plain text.```
+
+
+## Key Actions
+
+| Key / Action | Description                     |
+|--------------|---------------------------------|
+| **j** or **↓** | Move down                      |
+| **k** or **↑** | Move up                        |
+| **v**          | Reveal / hide selected password |
+| **d**          | Delete selected account         |
+| **q**          | Quit and lock vault             |
+
 
 ---
 
@@ -112,6 +129,7 @@ This will delete all specified accounts in one command.
 - Encryption key is stored in `secret.key`
 - Master password is stored in SQLite database
 - DO NOT delete `secret.key` or data cannot be recovered
+- Passwords typed in TUI mode are hidden from terminal display
 
 ---
 
@@ -162,7 +180,14 @@ Do not use it as a production password manager.
 ```bash
 python3 r2.py setpass rin123
 
-python3 r2.py add fb aldrix 123
+python3 r2.py add facebook aldrix mypass123
+python3 r2.py add github aldrix ghtoken456
 
-python3 r2.py view rin123
+python3 r2.py ui
 ```
+---
+
+👥 Contributors
+
+@iamjhonaldrix — core CLI engine
+@dvtrv1s — TUI mode, Linux path support fix
