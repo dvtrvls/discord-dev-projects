@@ -28,14 +28,12 @@ export default function SignupPage() {
             <h2 className="text-4xl font-bold">Register</h2>
             <p className="mt-3 text-gray-600">Create your account.</p>
 
-            <form className="mt-8 space-y-5">
+            <form className="mt-8 space-y-5 text-black">
               <input className="w-full rounded-2xl border p-4" placeholder="Full Name" />
               <input className="w-full rounded-2xl border p-4" placeholder="Address" />
               <input className="w-full rounded-2xl border p-4" placeholder="Contact Number" />
               <input className="w-full rounded-2xl border p-4" placeholder="Email" />
               <input className="w-full rounded-2xl border p-4" placeholder="Password" />
-
-              <input type="file" className="w-full border p-4 rounded-2xl" />
 
               <button className="w-full rounded-2xl bg-violet-600 p-4 text-white">
                 Sign Up
